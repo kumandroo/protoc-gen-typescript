@@ -44,14 +44,14 @@ type Service struct {
 }
 
 var messageTemplate = template.Must(template.New("message").Parse(`
-{{ if eq len .Fields 0 }}
-export type {{.Name}} = Record<string, unknown>;
-{{ else }}
+{{ if .Fields }}
 export type {{.Name}} = {
 	{{- range $field := .Fields}}
 	{{$field.Name}}?: {{$field.Type}},
 	{{- end}}
 };
+{{ else }}
+export type {{.Name}} = Record<string, unknown>;
 {{ end }}
 `))
 
