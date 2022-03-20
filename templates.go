@@ -44,11 +44,15 @@ type Service struct {
 }
 
 var messageTemplate = template.Must(template.New("message").Parse(`
+{{ if eq len .Fields 0 }}
+export type {{.Name}} = Record<string, unknown>;
+{{ else }}
 export type {{.Name}} = {
 	{{- range $field := .Fields}}
 	{{$field.Name}}?: {{$field.Type}},
 	{{- end}}
 };
+{{ end }}
 `))
 
 // Enum represents a protobuf enum type
