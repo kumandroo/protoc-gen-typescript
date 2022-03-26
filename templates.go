@@ -73,7 +73,7 @@ export type {{.Name}} =
 var serviceTemplate = template.Must(template.New("service").Parse(`
 export interface {{.Name}} {
     {{- range $method := .Methods}}
-    {{$method.Name}}(request: {{$method.RequestType}}, metadata?: any, options?: any, callback: (err: ServiceError, response: {{$method.ResponseType}}) => void): { cancel: () => void };
+    {{$method.Name}}(request: {{$method.RequestType}}, metadata?: any, options?: any, callback?: (err: ServiceError, response: {{$method.ResponseType}}) => void): { cancel: () => void };
     {{- end}}
 };
 `))
