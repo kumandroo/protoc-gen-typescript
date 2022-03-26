@@ -1,4 +1,4 @@
-module protoc-gen-typescript
+module github.com/kumandroo/protoc-gen-typescript
 
 go 1.17
 
