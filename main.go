@@ -85,7 +85,7 @@ func main() {
 		}
 	}
 
-	const outputFilename = "index.d.ts"
+	const outputFilename = "index.ts"
 
 	emitFiles([]*plugin.CodeGeneratorResponse_File{
 		{
